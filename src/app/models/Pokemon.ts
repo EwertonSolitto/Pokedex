@@ -4,7 +4,7 @@ import PokemonTypes from "./PokemonTypes"
 type Pokemon = {
   id: number,
   name: string,
-  type: Array<PokemonType>,
+  types: Array<PokemonType>,
   height: number,
   weight: number,
 }

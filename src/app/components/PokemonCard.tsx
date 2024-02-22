@@ -5,10 +5,10 @@ import pokeballTypes from "../classes/pokeballTypes";
 
 
 export default function PokemonCard(props: Pokemon) {
-  const { name, id, height, weight, type } = props
+  const { name, id, height, weight, types } = props
   const tailwindLoader = [bgTypes, pokeballTypes]
 
-  const firstType = type[0]
+  const firstType = types[0]
 
   const pokemonNumber = new String((`${'0'.repeat(4 - id.toString().length)}${id}#`))
 
@@ -34,7 +34,7 @@ export default function PokemonCard(props: Pokemon) {
         </div>
         <div className="flex flex-row justify-between text-sm">
           {
-            type.map(({type, portugueseType}, index) => {
+            types.map(({type, portugueseType}, index) => {
               return (
                 <span key={index} className={`w-20 h-6 bg-${type} flex justify-center items-center rounded-full font-bold pt-[3px] text-shadow`}>
                   {portugueseType}
