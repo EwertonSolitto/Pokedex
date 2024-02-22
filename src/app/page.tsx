@@ -2,35 +2,52 @@ import PokemonCard from "./components/PokemonCard";
 import { getPokemon } from "./functions/getPokemon";
 import translateType from "./functions/translateType";
 import Pokemon, { PokemonType } from "./models/Pokemon";
+import PokemonTypes from "./models/PokemonTypes";
+
+type Types = {
+  type: {
+    name: string
+  }
+}
+
+type PokemonAPI = {
+  id: number,
+  name: string,
+  height: number,
+  weight: number
+  types: Array<Types>
+}
 
 export default async function Home() {
-  const pokemonJSON: any = await getPokemon(1008)
+  const pokemonsResponse = Promise.all([getPokemon(1), getPokemon(2), getPokemon(3), getPokemon(4)])
   
-  const pokemonTypes: PokemonType[] = []
+  const pokemons = await pokemonsResponse.then((res) => res.map(({id, name, height, weight, types}) => {
+      const pokemonTypes = types.map((type: {type: {name: PokemonTypes}}) => {
 
-  for(let i = 0; i < pokemonJSON.types.length; i++) {
-    const type = pokemonJSON.types[i]
+        return {
+          type: type.type.name,
+          portugueseType: translateType(type.type.name)
+        }
+      })
 
-    pokemonTypes.push({
-      type: type.type.name,
-      portugueseType: translateType(type.type.name)
-    })
-  }
 
-  const pokemon: Pokemon = {
-    id: pokemonJSON.id,
-    name: pokemonJSON.name.charAt(0).toUpperCase() + pokemonJSON.name.slice(1),
-    height: pokemonJSON.height,
-    weight: pokemonJSON.weight,
-    type: pokemonTypes
-  }
+      return {
+        id: id,
+        name: name.charAt(0).toUpperCase() + name.slice(1),
+        height: height,
+        weight: weight,
+        types: pokemonTypes
+      }
+  }))
 
   return (
     <div className="w-full h-screen bg-gray-800 flex items-center justify-center">
       <div className="w-[70rem] h-[50rem] bg-red-600 flex items-center justify-center">
         <div className="w-[50rem] h-[30rem] bg-gray-800 flex justify-center items-center">
           <ol>
-            <PokemonCard id={pokemon.id} name={pokemon.name} height={pokemon.height} weight={pokemon.weight} type={pokemon.type} />
+            {
+              pokemons.map((pokemon, index) => (<PokemonCard key={index} id={pokemon.id} name={pokemon.name} height={pokemon.height} weight={pokemon.weight} type={pokemon.types} />))
+            }
           </ol>
         </div>
       </div>
