@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className={myFont.className}>{children}</body>
+      <body className={`${myFont.className} bg-gray-800 overflow-hidden min-h-screen flex flex-col justify-end`}>{children}</body>
     </html>
   )
 }
