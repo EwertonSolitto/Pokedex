@@ -2,67 +2,107 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --last: -8rem;
+  --fifth: -5rem;
+  --fourth: -2.5rem;
+  --third: -1rem;
+  --current: 1rem;
+  --top: 43%;
+}
+
 .text-shadow {
   text-shadow: 1px 1px black;
 }
 
-.top {
-  left: calc(40% - 8rem);
-  top: calc(43% - 22.5rem);
+.last-top, .last-bottom {
+  left: var(--last);
 }
 
-.last-pokemon-top {
-  left: calc(40% - 5rem);
-  top: calc(43% - 18rem);
+.last-top {
+  top: calc(var(--top) - 22.5rem);
 }
 
-.further-pokemon-top {
-  left: calc(40% - 2.5rem);
-  top: calc(43% - 13.5rem);
+.last-bottom {
+  top: calc(var(--top) + 22.5rem);
 }
 
-.middle-pokemon-top {
-  left: calc(40% - 1rem);
-  top: calc(43% - 9rem);
+.fifth-pokemon-top, .fifth-pokemon-bottom {
+  left: var(--fifth);
 }
 
-.closest-pokemon-top {
-  left: calc(40%);
-  top: calc(43% - 4.5rem)
+.fifth-pokemon-top {
+  top: calc(var(--top) - 18rem);
 }
 
-.current-pokemon {
-  left: calc(40% + 1rem);
-  top: calc(43%);
-  z-index: 100;
-}
-
-.closest-pokemon-bottom {
-  left: calc(40%);
-  top: calc(43% + 4.5rem);
-  z-index: 99;
-}
-
-.middle-pokemon-bottom {
-  left: calc(40% - 1rem);
-  top: calc(43% + 9rem);
-  z-index: 98;
-}
-
-.further-pokemon-bottom {
-  left: calc(40% - 2.5rem);
-  top: calc(43% + 13.5rem);
-  z-index: 97;
-}
-
-.last-pokemon-bottom {
-  left: calc(40% - 5rem);
-  top: calc(43% + 18rem);
+.fifth-pokemon-bottom {
+  top: calc(var(--top) + 18rem);
   z-index: 96;
 }
 
-.bottom {
-  left: calc(40% - 8rem);
-  top: calc(43% + 22.5rem);
+.fourth-pokemon-top, .fourth-pokemon-bottom {
+  left: var(--fourth)
 }
 
+.fourth-pokemon-top {
+  top: calc(var(--top) - 13.5rem);
+}
+
+.fourth-pokemon-bottom {
+  top: calc(var(--top) + 13.5rem);
+  z-index: 97;
+}
+
+.third-pokemon-top, .third-pokemon-bottom {
+  left: var(--third);
+}
+
+.third-pokemon-top {
+  top: calc(var(--top) - 9rem);
+}
+
+.third-pokemon-bottom {
+  top: calc(var(--top) + 9rem);
+  z-index: 98;
+}
+
+.second-pokemon-top {
+  top: calc(var(--top) - 4.5rem)
+}
+
+.second-pokemon-bottom {
+  top: calc(var(--top) + 4.5rem);
+  z-index: 99;
+}
+
+.current-pokemon {
+  left: var(--current);
+  top: calc(var(--top));
+  z-index: 100;
+}
+
+@media(max-width: 350px) {
+  .last-top, .last-bottom {
+    left: calc(var(--last) - 1.25rem)
+  }
+
+  .fifth-pokemon-bottom, .fifth-pokemon-top {
+    left: calc(var(--fifth) - 1.25rem)
+  }
+
+  .fourth-pokemon-bottom, .fourth-pokemon-top {
+    left: calc(var(--fourth) - 1.25rem)
+  }
+
+  .third-pokemon-bottom, .third-pokemon-top {
+    left: calc(var(--third) - 1.25rem)
+  }
+
+  .second-pokemon-bottom, .second-pokemon-top {
+    left: -1.25rem
+  }
+
+  .current-pokemon {
+    left: -.25rem;
+  }
+}

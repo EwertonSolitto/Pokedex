@@ -5,24 +5,24 @@ export default function whereIsThePokemon(pokemonNumber: PossibleNumbers): strin
     case 0:
       return 'current-pokemon'
     case 1:
-      return 'closest-pokemon-bottom'
+      return 'second-pokemon-bottom'
     case -1:
-      return 'closest-pokemon-top'
+      return 'second-pokemon-top'
     case 2:
-      return 'middle-pokemon-bottom'
+      return 'third-pokemon-bottom'
     case -2:
-      return 'middle-pokemon-top'
+      return 'third-pokemon-top'
     case 3:
-      return 'further-pokemon-bottom'
+      return 'fourth-pokemon-bottom'
     case -3:
-      return 'further-pokemon-top'
+      return 'fourth-pokemon-top'
     case 4:
-      return 'last-pokemon-bottom'
+      return 'fifth-pokemon-bottom'
     case -4:
-      return 'last-pokemon-top'
+      return 'fifth-pokemon-top'
     case 5:
-      return 'bottom'
+      return 'last-bottom'
     case -5:
-      return 'top'
+      return 'last-top'
   }
 }
