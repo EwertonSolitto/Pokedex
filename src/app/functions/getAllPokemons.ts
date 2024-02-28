@@ -18,7 +18,15 @@ export default async function getAllPokemons(currentPokemon: number): Promise<Ar
     pokemonNumbers.unshift(pokemonNumbers[0] - 1)
   }
 
-  const pokemonsResponse: PokemonAPI[] = await Promise.all(pokemonNumbers.map((num) => getPokemon(num)))
+  const pokemonsResponse: PokemonAPI[] = await Promise.all(pokemonNumbers.map((num) => getPokemon(num).catch(() => {
+    return {
+      id: num,
+      name: 'none',
+      height: 0,
+      weight: 0,
+      types: [{type: 'normal'}]
+    }
+  })))
 
   const pokemons = pokemonsResponse.map(({id, name, height, weight, types}: PokemonAPI) => {
       const pokemonTypes: PokemonType[] = types.map((type: {type: {name: PokemonTypes}}) => {

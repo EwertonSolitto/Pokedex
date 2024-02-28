@@ -7,6 +7,11 @@ import pokeballTypes from "../classes/pokeballTypes";
 export default function PokemonCard(props: { pokemon: Pokemon, style: string}) {
   const { pokemon, style } = props
   const { name, id, height, weight, types } = pokemon
+
+  if (name === 'None') {
+    return
+  }
+
   const tailwindLoader = [bgTypes, pokeballTypes]
 
   const firstType = types[0]
