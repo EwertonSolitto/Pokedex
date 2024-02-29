@@ -19,7 +19,10 @@ export default function PokemonCard(props: { pokemon: Pokemon, style: string}) {
   const pokemonNumber = new String((`${'0'.repeat(4 - id.toString().length)}${id}#`))
 
   return (
-    <li className={`absolute w-80 h-[7.5rem] bg-gray-800 border-red-600 border-solid border-8 rounded-full flex items-center ${style}`}>
+    <li className={`absolute w-80 h-[7.5rem] bg-gray-800 border-red-600 border-solid border-8 rounded-full flex items-center ${style} z-0`}>
+      <div className="absolute w-[21rem] h-[7.5rem] right-px ml-96 z-[2] pokemon-opacity">
+        <div className="w-[20.125rem] h-[7.5rem] bg-gray-800 ml-[1.475rem] rounded-full"></div>
+      </div>
       <div className={`w-24 h-24 rounded-full flex items-center justify-center bg-gray-400 ml-1 bg-[url('/pokeballs/${firstType.type}-pokeball.svg')] bg-cover rotate-[-40deg]`}>
         <Image src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`} alt={`name sprite`} width={80} height={80} className="w-20 h-20 rotate-[40deg]"/>
       </div>

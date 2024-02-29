@@ -3,20 +3,28 @@
 @tailwind utilities;
 
 :root {
-  --last: -8rem;
-  --fifth: -5rem;
-  --fourth: -2.5rem;
-  --third: -1rem;
-  --current: 1rem;
+  --last: 15rem;
+  --fifth: 11rem;
+  --fourth: 7rem;
+  --third: 3rem;
+  --current: 3rem;
   --top: 43%;
 }
+
+/* ol {
+  left: 10%;
+} */
 
 .text-shadow {
   text-shadow: 1px 1px black;
 }
 
 .last-top, .last-bottom {
-  left: var(--last);
+  margin-right: var(--last);
+
+  .pokemon-opacity {
+    opacity: 0.9;
+  }
 }
 
 .last-top {
@@ -28,7 +36,11 @@
 }
 
 .fifth-pokemon-top, .fifth-pokemon-bottom {
-  left: var(--fifth);
+  margin-right: var(--fifth);
+
+  .pokemon-opacity {
+    opacity: 0.7;
+  }
 }
 
 .fifth-pokemon-top {
@@ -37,11 +49,15 @@
 
 .fifth-pokemon-bottom {
   top: calc(var(--top) + 18rem);
-  z-index: 96;
+  z-index: 45;
 }
 
 .fourth-pokemon-top, .fourth-pokemon-bottom {
-  left: var(--fourth)
+  margin-right: var(--fourth);
+
+  .pokemon-opacity {
+    opacity: 0.5;
+  }
 }
 
 .fourth-pokemon-top {
@@ -50,11 +66,15 @@
 
 .fourth-pokemon-bottom {
   top: calc(var(--top) + 13.5rem);
-  z-index: 97;
+  z-index: 46;
 }
 
 .third-pokemon-top, .third-pokemon-bottom {
-  left: var(--third);
+  margin-right: var(--third);
+
+  .pokemon-opacity {
+    opacity: 0.3;
+  }
 }
 
 .third-pokemon-top {
@@ -63,7 +83,11 @@
 
 .third-pokemon-bottom {
   top: calc(var(--top) + 9rem);
-  z-index: 98;
+  z-index: 47;
+}
+
+:is(.second-pokemon-top, .second-pokemon-bottom) .pokemon-opacity {
+  opacity: 0.15;
 }
 
 .second-pokemon-top {
@@ -72,37 +96,15 @@
 
 .second-pokemon-bottom {
   top: calc(var(--top) + 4.5rem);
-  z-index: 99;
+  z-index: 48;
 }
 
 .current-pokemon {
-  left: var(--current);
+  margin-left: var(--current);
   top: calc(var(--top));
-  z-index: 100;
-}
+  z-index: 49;
 
-@media(max-width: 350px) {
-  .last-top, .last-bottom {
-    left: calc(var(--last) - 1.25rem)
-  }
-
-  .fifth-pokemon-bottom, .fifth-pokemon-top {
-    left: calc(var(--fifth) - 1.25rem)
-  }
-
-  .fourth-pokemon-bottom, .fourth-pokemon-top {
-    left: calc(var(--fourth) - 1.25rem)
-  }
-
-  .third-pokemon-bottom, .third-pokemon-top {
-    left: calc(var(--third) - 1.25rem)
-  }
-
-  .second-pokemon-bottom, .second-pokemon-top {
-    left: -1.25rem
-  }
-
-  .current-pokemon {
-    left: -.25rem;
+  .pokemon-opacity {
+    opacity: 0;
   }
 }

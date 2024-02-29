@@ -17,16 +17,19 @@ export default async function Home({
   const pokemons = await getAllPokemons(pokemonId)
 
   return (
-    <div className="w-full h-screen overflow-hidden">
-          <div className="absolute w-40 flex">
-            <Button addOrSub="add" content="+1" isDisabled={false} pokemonId={pokemonId}/>
-            <Button addOrSub="sub" content="-1" isDisabled={pokemonId === 1 ? true : false} pokemonId={pokemonId}/>
-          </div>
-          <ol>
-            {
-              pokemons.map(({pokemon, style}, index) => (<PokemonCard key={index} pokemon={pokemon} style={style} />))
-            }
-          </ol>
-    </div>
+    <main className="absolute w-full h-screen overflow-hidden">
+        {/* <div className="absolute w-full h-screen border-red-600 border-8 z-50"></div>
+        <div className="absolute w-screen bg-red-600 h-60 bottom-0 z-50"></div> */}
+
+      <div className="absolute w-40 flex z-50">
+        <Button addOrSub="add" content="+1" isDisabled={false} pokemonId={pokemonId}/>
+        <Button addOrSub="sub" content="-1" isDisabled={pokemonId === 1 ? true : false} pokemonId={pokemonId}/>
+      </div>
+        <ol className="absolute w-full h-full flex align-center justify-center">
+          {
+            pokemons.map(({pokemon, style}, index) => (<PokemonCard key={index} pokemon={pokemon} style={style} />))
+          }
+        </ol>
+    </main>
   )
 }
