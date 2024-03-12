@@ -27,7 +27,7 @@ export default async function Home({
         <Menu pokemon={selectedPokemon.pokemon} />
       </div>
 
-      <div className="absolute bottom-4 left-4 w-40 flex flex-col-reverse z-50">
+      <div className="absolute bottom-20 left-4 w-40 flex flex-col-reverse z-50 gap-5">
         <Button addOrSub="add" isDisabled={false} pokemonId={pokemonId} >
           <div className="rotate-180">
             <Arrow />
