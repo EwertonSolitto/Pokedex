@@ -2,6 +2,7 @@ import Image from "next/image";
 import Pokemon from "../models/Pokemon";
 import bgTypes from "../classes/bgTypes";
 import pokeballTypes from "../classes/pokeballTypes";
+import Type from "./Type";
 
 
 export default function PokemonCard(props: { pokemon: Pokemon, style: string}) {
@@ -15,6 +16,7 @@ export default function PokemonCard(props: { pokemon: Pokemon, style: string}) {
   const tailwindLoader = [bgTypes, pokeballTypes]
 
   const firstType = types[0]
+  const secondType = types[1]
 
   const pokemonNumber = new String((`${'0'.repeat(4 - id.toString().length)}${id}#`))
 
@@ -24,7 +26,7 @@ export default function PokemonCard(props: { pokemon: Pokemon, style: string}) {
         <div className="w-[20.125rem] h-[7.5rem] bg-gray-800 ml-[1.475rem] rounded-full"></div>
       </div>
       <div className={`w-24 h-24 rounded-full flex items-center justify-center bg-gray-400 ml-1 bg-[url('/pokeballs/${firstType.type}-pokeball.svg')] bg-cover rotate-[-40deg]`}>
-        <Image src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`} alt={`name sprite`} width={80} height={80} className="w-20 h-20 rotate-[40deg]"/>
+        <Image src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`} alt={`${pokemon.name} sprite`} width={80} height={80} className="w-20 h-20 rotate-[40deg]"/>
       </div>
       <div className="text-gray-400 w-[10.5rem] h-full ml-1 py-1 flex flex-col justify-between">
         <div className="flex flex-row justify-between">
@@ -41,16 +43,9 @@ export default function PokemonCard(props: { pokemon: Pokemon, style: string}) {
             Altura: {height}m
           </span>
         </div>
-        <div className="flex flex-row justify-between text-sm">
-          {
-            types.map(({type, portugueseType}, index) => {
-              return (
-                <span key={index} className={`w-20 h-6 bg-${type} flex justify-center items-center rounded-full font-bold pt-[3px] text-shadow`}>
-                  {portugueseType}
-                </span>
-              )
-            })
-          }
+        <div className="flex flex-row justify-between">
+          <Type type={firstType} />
+          {secondType && <Type type={secondType} />}
         </div>
       </div>
       <Image src={`/pokeballs/${firstType.type}-pokeball.svg`} alt="green pokeball" width={68} height={68} className="absolute ml-48 mb-4 opacity-20" />
