@@ -2,12 +2,11 @@ import Image from "next/image";
 import Pokemon from "../models/Pokemon";
 import Type from "./Type";
 
-type menuProps = {
+type MenuProps = {
   pokemon: Pokemon
 }
 
-
-export default function Menu({pokemon}: menuProps) {
+export default function Menu({pokemon}: MenuProps) {
   const firstType = pokemon.types[0]
   const secondType = pokemon.types[1]
 

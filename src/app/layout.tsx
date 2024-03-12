@@ -6,7 +6,7 @@ const myFont = localFont({ src: './font/Flexo-Regular.ttf' })
 
 export const metadata: Metadata = {
   title: 'Pokedex',
-  description: 'An interactive Pokedex',
+  description: 'Uma pokedex interativa',
 }
 
 export default function RootLayout({

@@ -4,8 +4,9 @@ import bgTypes from "../classes/bgTypes";
 import pokeballTypes from "../classes/pokeballTypes";
 import Type from "./Type";
 
+type PokemonCardProps = { pokemon: Pokemon, style: string | undefined }
 
-export default function PokemonCard(props: { pokemon: Pokemon, style: string}) {
+export default function PokemonCard(props: PokemonCardProps) {
   const { pokemon, style } = props
   const { name, id, height, weight, types } = pokemon
 

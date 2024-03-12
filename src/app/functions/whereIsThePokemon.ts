@@ -1,6 +1,4 @@
-import PossibleNumbers from "../models/PossibleNumbers"
-
-export default function whereIsThePokemon(pokemonNumber: PossibleNumbers): string {
+export default function whereIsThePokemon(pokemonNumber: number): string | undefined {
   switch(pokemonNumber) {
     case 0:
       return 'current-pokemon'

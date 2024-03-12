@@ -1,14 +1,13 @@
 import Pokemon, { PokemonType } from "../models/Pokemon";
 import PokemonAPI from "../models/PokemonAPI";
 import PokemonTypes from "../models/PokemonTypes";
-import PossibleNumbers from "../models/PossibleNumbers";
 import { getPokemon } from "./getPokemon";
 import translateType from "./translateType";
 import whereIsThePokemon from "./whereIsThePokemon";
 
 export default async function getAllPokemons(currentPokemon: number): Promise<Array<{
   pokemon: Pokemon,
-  style: string
+  style: string | undefined
 }>> {
   const pokemonNumbers = [currentPokemon, currentPokemon + 1, currentPokemon + 2, currentPokemon + 3, currentPokemon + 4, currentPokemon + 5]
 
@@ -35,7 +34,7 @@ export default async function getAllPokemons(currentPokemon: number): Promise<Ar
           portugueseType: translateType(type.type.name)
         }
       })
-      const position: PossibleNumbers = id - currentPokemon
+      const position: number = id - currentPokemon
 
       const style = whereIsThePokemon(position) 
 
